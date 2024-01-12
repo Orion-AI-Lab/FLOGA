@@ -1,0 +1,10 @@
+{
+    "method": "hfanet",
+    "optimizer": {
+        "name": "sgd",
+        "learning_rate": 0.01,
+        "momentum": 0.9,
+        "weight_decay": 1e-5,  // 1e-5
+        "lr_schedule": "step_10"
+    }
+}

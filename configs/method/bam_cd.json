@@ -1,0 +1,17 @@
+{
+    "method": "bam-cd",
+    "optimizer": {
+        "name": "adam",
+        "learning_rate": 0.001,
+        "weight_decay": 0.0,
+        "lr_schedule": null
+    },
+    "architecture": "UNet",
+    "backbone": "resnet101",
+    "pretrained": false,
+    "encoder_weights": null,
+    "activation": null,  // Options: "softmax", "logsoftmax", null
+    "siamese": true,
+    "decoder_attention_type": "scse",  // Options: "scse", null
+    "decoder_use_batchnorm": true
+}

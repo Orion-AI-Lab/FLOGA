@@ -1,0 +1,10 @@
+{
+  "method": "adhr_cdnet",
+  "optimizer": {
+    "name": "sgd",
+    "learning_rate": 1e-3,
+    "momentum": 0.9,
+    "weight_decay": 5e-4,
+    "lr_schedule": "linear",
+  }
+}

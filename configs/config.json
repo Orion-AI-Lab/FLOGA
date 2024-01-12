@@ -1,0 +1,139 @@
+{
+    "method": "fc_ef_diff",  // Options: "unet", fc_ef_diff", "fc_ef_conc", "snunet", "bam_cd", "changeformer", "hfanet", "adhr_cdnet", "transunet_cd", "bit_cd"
+    "mode": "train", // Options: "train" (train+val), "eval"
+    "dataset_type": "sen2_20_mod_500",
+    "distributed": false,
+    "num_workers": 6,
+    "seed": 999,
+    "gpu_ids": [
+        0
+    ],
+    "train": {
+        "n_epochs": 150,
+        "rep_times": 10,  // num times to replicate the experiment
+        "val_freq": 1,
+        "save_checkpoint_freq": -1,  // num of epochs to save checkpoints after. -1 to save only best. If list of int ([int1, int2]) it will sample every `int1` epochs until epoch `int2`. After that will sample every epoch.
+        "print_freq": 5,  // num of iterations to refresh progress bar after
+        "mixed_precision": false,
+        "loss_function": "cross_entropy",  // Options: "cross_entropy", "focal", "dice", "dice+ce"
+        "weighted_loss": false,
+        "resume": false,
+        "log_landcover_metrics": true
+    },
+    "wandb": {
+        "wandb_project": "",
+        "wandb_entity": "",
+        "wandb_id": "None",
+        "resume_wandb": false,
+        "activate": false
+    },
+    "paths": {
+        "dataset": "/cellar/datasets/with_marked_overlapping_burnt_areas/only_fb/",
+        "results": "results/",  // root folder for the results
+        "load_state": null  // The checkpoint to load
+    },
+    "datasets": {
+        "train": "allEvents_60-20-20_r1_v4_train.pkl",
+        "val": "allEvents_60-20-20_r1_v4_val.pkl",
+        "test": "allEvents_60-20-20_r1_v4_test.pkl",
+        "data_source": "sen2",  // Options: "sen2", "mod"
+        "scale_input": "clamp_scale_10000",  // Options: "normalize", "min-max", "clamp_scale_<value>", "clamp_<value>", a list of custom [min, max] values, null. <value> is an integer depicting the clamping threshold
+        "img_size": 256,
+        "batch_size": 8,
+        "num_workers": 4,
+        "use_shuffle": true,
+        "only_positives": true,  // Use only positive patches
+        "nan_value": 0,  // the value to replace NaNs with
+        "augmentation": false,
+        "oversampling": false,  // Options: false or float (0 <= float <= 1)
+        "selected_bands": {  // Include only the bands needed for the experiments. Indices will be filled in during execution
+            "sen2": {
+                "B02": -1,
+                "B03": -1,
+                "B04": -1,
+                "B05": -1,
+                "B06": -1,
+                "B07": -1,
+                "B11": -1,
+                "B12": -1,
+                "B8A": -1
+            },
+            "mod": {
+                "B01": -1,
+                "B02": -1,
+                "B03": -1,
+                "B04": -1,
+                "B05": -1,
+                "B06": -1,
+                "B07": -1
+            }
+        },
+        "mod_bands": {  // For reference
+            "500": {
+                "B01": 0,
+                "B02": 1,
+                "B03": 2,
+                "B04": 3,
+                "B05": 4,
+                "B06": 5,
+                "B07": 6
+            },
+        },
+        "sen2_bands": {  // For reference
+            "10": {
+                "B02": 0,
+                "B03": 1,
+                "B04": 2,
+                "B08": 3
+            },
+            "20": {
+                "B02": 0,
+                "B03": 1,
+                "B04": 2,
+                "B05": 3,
+                "B06": 4,
+                "B07": 5,
+                "B11": 6,
+                "B12": 7,
+                "B8A": 8
+            },
+            "60": {
+                "B01": 0,
+                "B02": 1,
+                "B03": 2,
+                "B04": 3,
+                "B05": 4,
+                "B06": 5,
+                "B07": 6,
+                "B09": 7,
+                "B11": 8,
+                "B12": 9,
+                "B8A": 10
+            }
+        },
+        "sen2_mod_500_band_mapping": {  // For reference
+            "B02": "B03",  // Blue
+            "B03": "B04",  // Green
+            "B04": "B01",  // Red
+            "B08": "B02",  // NIR
+            "B12": "B07",  // SWIR
+            "B8A": "B02"  // NIR
+        },
+        "sen2_mean": {
+            "10": [],
+            "20": [63.8612,  73.0030,  78.0166, 100.7361, 137.4804, 151.7485, 144.9945, 105.9401, 162.0981],
+            "60": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        },
+        "sen2_std": {
+            "10": [],
+            "20": [288.5572, 318.7534, 354.1387, 430.6897, 573.3617, 634.2242, 614.6827, 454.1967, 680.0145],
+            "60": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        },
+        "mod_mean": {
+            "500": [1, 1, 1, 1, 1, 1, 1]
+        },
+        "mod_std": {
+            "500": [1, 1, 1, 1, 1, 1, 1]
+        }
+    }
+}
