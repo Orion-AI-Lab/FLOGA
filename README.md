@@ -31,7 +31,7 @@ The train/val/test splits used in the paper can be found [here](https://www.drop
 
 ![BAM-CD architecture](assets/bam-cd.png)
 
-This repo also contains the code for the proposed BAM-CD model for burnt area mapping with bitemporal Sentinel-2 imagery. The model can be found inside the folder `models/bam_cd/`.
+This repo also contains the code for the proposed BAM-CD model for burnt area mapping with bitemporal Sentinel-2 imagery. The model can be found inside the folder `models/bam_cd/`. The implementation is heavily based on [segmentation_models.pytorch](https://github.com/qubvel/segmentation_models.pytorch).
 
 #### Pretrained model
 
