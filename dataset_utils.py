@@ -36,7 +36,7 @@ class Dataset(torch.utils.data.Dataset):
 
         # format: "sen2_xx_mod_yy"
         tmp = configs['dataset_type'].split('_')
-        self.sgd = {tmp[0]: tmp[1], tmp[2]: tmp[3]}
+        self.gsd = {tmp[0]: tmp[1], tmp[2]: tmp[3]}
 
         self.clc = clc
         self.sea = sea
@@ -45,7 +45,7 @@ class Dataset(torch.utils.data.Dataset):
         self.selected_bands = {}
         self.means = {}
         self.stds = {}
-        for k, v in self.sgd.items():
+        for k, v in self.gsd.items():
             self.selected_bands[k] = configs['datasets']['selected_bands'][k].values()
             self.means[k] = [m for i, m in enumerate(configs['datasets'][f'{k}_mean'][v]) if i in self.selected_bands[k]]
             self.stds[k] = [m for i, m in enumerate(configs['datasets'][f'{k}_std'][v]) if i in self.selected_bands[k]]

@@ -111,15 +111,15 @@ if __name__ == '__main__':
         else:
             checkpoint = resume_from_checkpoint
 
-    # Get data sources and SGDs
+    # Get data sources and GSDs
     tmp = configs['dataset_type'].split('_')
     # format: "sen2_xx_mod_yy"
-    sgd = {tmp[0]: tmp[1], tmp[2]: tmp[3]}
+    gsd = {tmp[0]: tmp[1], tmp[2]: tmp[3]}
 
     # Update the configs with the SEN2 or MODIS bands to be used
     data_source = configs['datasets']['data_source']
     for band in configs['datasets']['selected_bands'][data_source].keys():
-        configs['datasets']['selected_bands'][data_source][band] = configs['datasets'][f'{data_source}_bands'][sgd[data_source]][band]
+        configs['datasets']['selected_bands'][data_source][band] = configs['datasets'][f'{data_source}_bands'][gsd[data_source]][band]
 
     # Compute total number of input channels
     inp_channels = len(configs['datasets']['selected_bands'][data_source])
@@ -160,7 +160,7 @@ if __name__ == '__main__':
                 model = model[0]
 
             train_change_detection(model, device, class_weights, run_path, init_epoch, train_loader, val_loader, validation_id,
-                                   sgd, checkpoint, configs, model_configs, rep_i, wandb)
+                                   gsd, checkpoint, configs, model_configs, rep_i, wandb)
 
     # --- Test model ---
 
@@ -190,7 +190,7 @@ if __name__ == '__main__':
 
         model.load_state_dict(checkpoint['model_state_dict'])
         res = eval_change_detection(model, device, class_weights, init_epoch, test_loader, validation_id,
-                                    sgd, 'test', configs, model_configs, rep_i, wandb, run_path)
+                                    gsd, 'test', configs, model_configs, rep_i, wandb, run_path)
 
         for k, v in res.items():
             results[k].append(v)

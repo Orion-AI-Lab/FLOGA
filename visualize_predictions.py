@@ -84,15 +84,15 @@ if __name__ == '__main__':
     # Load checkpoint
     checkpoint = torch.load(resume_from_checkpoint, map_location=device)
 
-    # Get data sources and SGDs
+    # Get data sources and GSDs
     tmp = configs['dataset_type'].split('_')
     # format: "sen2_xx_mod_yy"
-    sgd = {tmp[0]: tmp[1], tmp[2]: tmp[3]}
+    gsd = {tmp[0]: tmp[1], tmp[2]: tmp[3]}
 
     # Update the configs with the SEN2 or MODIS bands to be used
     data_source = configs['datasets']['data_source']
     for band in configs['datasets']['selected_bands'][data_source].keys():
-        configs['datasets']['selected_bands'][data_source][band] = configs['datasets'][f'{data_source}_bands'][sgd[data_source]][band]
+        configs['datasets']['selected_bands'][data_source][band] = configs['datasets'][f'{data_source}_bands'][gsd[data_source]][band]
 
     # Compute total number of input channels
     inp_channels = len(configs['datasets']['selected_bands'][data_source])

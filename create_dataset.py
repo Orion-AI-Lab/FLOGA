@@ -112,7 +112,7 @@ def export_patches(floga_path, out_path, out_size, out_format, sea_ratio):
             pbar.set_description(f'({hdf_file_i + 1}/{len(hdf_files)}) {hdf_file.name}')
 
             hdf = h5py.File(hdf_file, 'r')
-            year, _, sen_sgd, _, _ = hdf_file.stem.split('_')[2:]
+            year, _, sen_gsd, _, _ = hdf_file.stem.split('_')[2:]
 
             image_names = [
                 'clc_100_mask',
@@ -122,10 +122,10 @@ def export_patches(floga_path, out_path, out_size, out_format, sea_ratio):
                 'mod_500_post',
                 'mod_500_pre',
                 'sea_mask',
-                f'sen2_{sen_sgd}_cloud_post',
-                f'sen2_{sen_sgd}_cloud_pre',
-                f'sen2_{sen_sgd}_post',
-                f'sen2_{sen_sgd}_pre'
+                f'sen2_{sen_gsd}_cloud_post',
+                f'sen2_{sen_gsd}_cloud_pre',
+                f'sen2_{sen_gsd}_post',
+                f'sen2_{sen_gsd}_pre'
             ]
 
             out_path_hdf = out_path / year

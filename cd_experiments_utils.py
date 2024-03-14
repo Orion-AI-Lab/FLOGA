@@ -19,7 +19,7 @@ CLASS_LABELS = {0: 'Unburnt', 1: 'Burnt', 2: 'Other events'}
 
 
 def train_change_detection(model, device, class_weights, run_path, init_epoch, train_loader, val_loader, validation_id,
-                           sgd, checkpoint, configs, model_configs, rep_i, wandb=None):
+                           gsd, checkpoint, configs, model_configs, rep_i, wandb=None):
     '''
     Train a model for Change Detection using a single satellite source.
     '''
@@ -198,7 +198,7 @@ def train_change_detection(model, device, class_weights, run_path, init_epoch, t
 
         # Evaluate on validation set
         val_acc, val_score, miou, burnt_score = eval_change_detection(model, device, class_weights,
-            init_epoch, val_loader, validation_id, sgd, 'Val', configs, model_configs, rep_i, wandb, run_path)
+            init_epoch, val_loader, validation_id, gsd, 'Val', configs, model_configs, rep_i, wandb, run_path)
 
         if (epoch != 0) and (burnt_score > best_val):
             best_val = burnt_score
@@ -218,7 +218,7 @@ def train_change_detection(model, device, class_weights, run_path, init_epoch, t
                 f.write(f'{burnt_score}')
 
 
-def eval_change_detection(model, device, class_weights, init_epoch, loader, validation_id, sgd,
+def eval_change_detection(model, device, class_weights, init_epoch, loader, validation_id, gsd,
                           mode, configs, model_configs, rep_i, wandb=None, run_path=None):
     cm, iou = initialize_metrics(configs, device)
 
@@ -302,7 +302,7 @@ def eval_change_detection(model, device, class_weights, init_epoch, loader, vali
     selected_bands_idx = {band: order_id for order_id, (band, _) in enumerate(configs['datasets']['selected_bands'][configs['datasets']['data_source']].items())}
 
     if configs['datasets']['data_source'] == 'sen2':
-        if sgd['sen2'] == '10':
+        if gsd['sen2'] == '10':
             if set(['B08', 'B04', 'B03']) <= set(configs['datasets']['selected_bands']['sen2'].keys()):
                 # NIR, Red, Green
                 bands_to_plot = [selected_bands_idx[band] for band in ['B08', 'B04', 'B03']]
