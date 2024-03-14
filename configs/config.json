@@ -1,7 +1,7 @@
 {
     "method": "fc_ef_diff",  // Options: "unet", fc_ef_diff", "fc_ef_conc", "snunet", "bam_cd", "changeformer", "hfanet", "adhr_cdnet", "transunet_cd", "bit_cd"
     "mode": "train", // Options: "train" (train+val), "eval"
-    "dataset_type": "sen2_20_mod_500",
+    "dataset_type": "sen2_20_mod_500",  // Format: sen2_<sen2_gsd>_mod_<mod_gsd>
     "distributed": false,
     "num_workers": 6,
     "seed": 999,
