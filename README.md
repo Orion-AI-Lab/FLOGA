@@ -21,6 +21,19 @@ python create_dataset.py --floga_path path/to/hdf/files --out_path data/ --out_s
 
 The above command will crop the images into 256x256 patches and export 3 pickle files with the train, validation and test splits respectively. The option `--sample` dictates that for each positive patch (i.e. patch that contains at least 1 burnt pixel) a negative one (i.e. a patch with no burnt pixels) will be included. Run `python create_dataset.py --help` for more information on the various options.
 
+#### Brief description
+
+FLOGA contains aligned Sentinel-2 and MODIS imagery for 326 wildfire events in Greece over the period 2017-2021, along with high-resolution burnt area mappings produced by the Hellenic Fire Service. For each event, the dataset offers:
+ - Pre-fire Sentinel-2/MODIS imagery
+ - Post-fire Sentinel-2/MODIS imagery
+ - Cloud masks for the pre-fire imagery
+ - Cloud masks for the post-fire imagery
+ - Water mask
+ - Corine Land Cover mask
+ - Ground truth label
+
+The labels can contain the following values: **0** for non-burnt pixels, **1** for burnt pixels, and **2** for pixels burnt in other fire events of the same year. The pixels marked with **2** may or may not contain burnt areas (this depends on the timestamps of the fires as well as the timestamps of the selected satellite imagery), so we have marked them with this unique value in order to facilitate their exclusion from the training/evaluation process.
+
 #### Dataset exploration
 A useful notebook with an exploration of the dataset can be found in `Data_exploration.ipynb`.
 
