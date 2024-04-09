@@ -37,6 +37,10 @@ This repo also contains the code for the proposed BAM-CD model for burnt area ma
 
 You can find the weights of the pretrained BAM-CD model [here](https://www.dropbox.com/scl/fo/9fia0j00h539t9x6gvc9z/h?rlkey=rvl5bsmx1au796x5z76jkmmgb&dl=0).
 
+## UPDATES
+
+ - **9/4/2024:** An issue with MODIS imagery on the 2019 data has been fixed.
+
 ### Citation
 If you would like to use our work, please cite our paper:
 
