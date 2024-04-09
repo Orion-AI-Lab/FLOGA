@@ -41,7 +41,7 @@ You can find the weights of the pretrained BAM-CD model [here](https://www.dropb
 
  - **9/4/2024:** An issue with MODIS imagery on the 2019 data has been fixed.
 
-### Citation
+## Citation
 If you would like to use our work, please cite our paper:
 
 ```
