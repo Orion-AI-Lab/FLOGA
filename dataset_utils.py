@@ -130,18 +130,36 @@ class Dataset(torch.utils.data.Dataset):
             elif sample_info == 'positive_flag':
                 loaded_sample['positive'] = sample[sample_info]
             elif ('label' in sample_info):
-                loaded_sample[sample_info] = torch.load(sample[sample_info])
+                if sample[sample_info].suffix == '.npy':
+                    loaded_sample[sample_info] = torch.from_numpy(np.load(sample[sample_info]))
+                else:
+                    loaded_sample[sample_info] = torch.load(sample[sample_info])
             elif self.clouds and ('cloud' in sample_info):
-                loaded_sample[sample_info] = torch.load(sample[sample_info])
+                if sample[sample_info].suffix == '.npy':
+                    loaded_sample[sample_info] = torch.from_numpy(np.load(sample[sample_info]).astype(np.float32))
+                else:
+                    loaded_sample[sample_info] = torch.load(sample[sample_info])
             elif 'sea' in sample_info:
                 if self.sea:
-                    loaded_sample[sample_info] = torch.load(sample[sample_info])
+                    if sample[sample_info].suffix == '.npy':
+                        loaded_sample[sample_info] = torch.from_numpy(np.load(sample[sample_info]))
+                    else:
+                        loaded_sample[sample_info] = torch.load(sample[sample_info])
             elif 'S2' in sample_info:
-                loaded_sample[sample_info] = torch.load(sample[sample_info]).to(torch.float32)
+                if sample[sample_info].suffix == '.npy':
+                    loaded_sample[sample_info] = torch.from_numpy(np.load(sample[sample_info]).astype(np.float32)).to(torch.float32)
+                else:
+                    loaded_sample[sample_info] = torch.load(sample[sample_info]).to(torch.float32)
             elif 'MOD' in sample_info:
-                loaded_sample[sample_info] = torch.load(sample[sample_info]).to(torch.float32)
+                if sample[sample_info].suffix == '.npy':
+                    loaded_sample[sample_info] = torch.from_numpy(np.load(sample[sample_info]).astype(np.float32)).to(torch.float32)
+                else:
+                    loaded_sample[sample_info] = torch.load(sample[sample_info]).to(torch.float32)
             elif self.clc and ('clc' in sample_info):
-                loaded_sample[sample_info] = torch.load(sample[sample_info])
+                if sample[sample_info].suffix == '.npy':
+                    loaded_sample[sample_info] = torch.from_numpy(np.load(sample[sample_info]).astype(np.float32))
+                else:
+                    loaded_sample[sample_info] = torch.load(sample[sample_info])
 
         return loaded_sample
 
