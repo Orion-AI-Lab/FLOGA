@@ -42,7 +42,7 @@
         "batch_size": 8,
         "num_workers": 4,
         "use_shuffle": true,
-        "only_positives": true,  // Use only positive patches
+        "only_positives": false,  // Use only positive patches
         "nan_value": 0,  // the value to replace NaNs with
         "augmentation": false,
         "oversampling": false,  // Options: false or float (0 <= float <= 1)
