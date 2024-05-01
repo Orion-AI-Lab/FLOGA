@@ -58,10 +58,14 @@ You can find the weights of the pretrained BAM-CD model [here](https://www.dropb
 If you would like to use our work, please cite our paper:
 
 ```
-@article{sdraka2023floga,
-  title={FLOGA: A machine learning ready dataset, a benchmark and a novel deep learning model for burnt area mapping with Sentinel-2},
+@ARTICLE{10479972,
   author={Sdraka, Maria and Dimakos, Alkinoos and Malounis, Alexandros and Ntasiou, Zisoula and Karantzalos, Konstantinos and Michail, Dimitrios and Papoutsis, Ioannis},
-  journal={arXiv preprint arXiv:2311.03339},
-  year={2023}
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, 
+  title={FLOGA: A Machine-Learning-Ready Dataset, a Benchmark, and a Novel Deep Learning Model for Burnt Area Mapping With Sentinel-2}, 
+  year={2024},
+  volume={17},
+  number={},
+  pages={7801-7824},
+  doi={10.1109/JSTARS.2024.3381737}
 }
 ```
