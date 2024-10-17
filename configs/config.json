@@ -28,7 +28,7 @@
         "activate": false
     },
     "paths": {
-        "dataset": "/cellar/datasets/with_marked_overlapping_burnt_areas/only_fb/",
+        "dataset": "",  // folder containing the dataset
         "results": "results/",  // root folder for the results
         "load_state": null  // The checkpoint to load
     },
