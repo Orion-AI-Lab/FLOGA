@@ -48,11 +48,18 @@ This repo also contains the code for the proposed BAM-CD model for burnt area ma
 
 #### Pretrained model
 
-You can find the weights of the pretrained BAM-CD model [here](https://www.dropbox.com/scl/fo/9fia0j00h539t9x6gvc9z/h?rlkey=rvl5bsmx1au796x5z76jkmmgb&dl=0).
+**V1**
+
+You can find the weights of the pretrained BAM-CD (version 1) model [here](https://www.dropbox.com/scl/fo/7boya0nvjb0sgmg9l5quo/ALldNkZ5d-DMtUMmUPm5O4A?rlkey=1p29xzb912mj4hh68k8waac9x&st=rkk9ke5g&dl=0). This model is the one described in the corresponding publication.
+
+**V2**
+
+A new BAM-CD (version 2) model has been trained and achieves more robust results. The new model adopts a pseudo-siamese scheme and extensive data augmentation is applied during training. The weights can be found [here](https://www.dropbox.com/scl/fo/8bhch7e0yhwgfqxsc6i69/ANcImDZyq7EYHVPt66aYuq8?rlkey=oiz26v6r09t4bpr5fize3a9a8&st=4qo50vqh&dl=0). To use this model, change the appropriate lines in the `configs/method/bam_cd.json` file as denoted in the comments.
 
 ## UPDATES
 
  - **9/4/2024:** An issue with MODIS imagery on the 2019 data has been fixed.
+ - **17/10/2024:** Added new model weights.
 
 ## Citation
 If you would like to use our work, please cite our paper:
