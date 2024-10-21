@@ -1,6 +1,6 @@
 ## FLOGA and BAM-CD
 
-This repository contains the dataset and code for the paper **"FLOGA: A machine learning ready dataset, a benchmark and a novel deep learning model for burnt area mapping with Sentinel-2"** (Sdraka et al., 2023).
+This repository contains the dataset and code for the paper **"FLOGA: A machine learning ready dataset, a benchmark and a novel deep learning model for burnt area mapping with Sentinel-2"** (Sdraka et al., 2024).
 
 ## FLOGA Dataset
 
