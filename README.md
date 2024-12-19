@@ -61,6 +61,12 @@ A new BAM-CD (version 2) model has been trained and achieves more robust results
  - **9/4/2024:** An issue with MODIS imagery on the 2019 data has been fixed.
  - **17/10/2024:** Added new model weights.
 
+## TODOs
+
+ - Upload dataset to HuggingFace.
+ - Interpolate Sentinel-2 cloud masks for GSD 10m.
+ - Provide better cloud masks.
+
 ## Citation
 If you would like to use our work, please cite our paper:
 
