@@ -122,11 +122,15 @@ def export_patches(floga_path, out_path, out_size, out_format, sea_ratio):
                 'mod_500_post',
                 'mod_500_pre',
                 'sea_mask',
-                f'sen2_{sen_gsd}_cloud_post',
-                f'sen2_{sen_gsd}_cloud_pre',
                 f'sen2_{sen_gsd}_post',
                 f'sen2_{sen_gsd}_pre'
             ]
+
+            if sen_gsd in ['20', '60']:
+                image_names += [
+                    f'sen2_{sen_gsd}_cloud_post',
+                    f'sen2_{sen_gsd}_cloud_pre'
+                ]
 
             out_path_hdf = out_path / year
             out_path_hdf.mkdir(parents=True, exist_ok=True)
