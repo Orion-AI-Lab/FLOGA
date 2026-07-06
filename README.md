@@ -6,7 +6,7 @@ This repository contains the dataset and code for the paper **"FLOGA: A machine 
 
 ![FLOGA sample](assets/dataset_sample.png)
 
-You can download the FLOGA dataset from [Dropbox](https://www.dropbox.com/scl/fo/3sqbs3tioox7s5vb4jmwl/h?rlkey=5p3e7wa5al4cy9x34pmtp9g6d&dl=0).
+You can download the FLOGA dataset from [Dropbox](https://www.dropbox.com/scl/fo/3sqbs3tioox7s5vb4jmwl/h?rlkey=5p3e7wa5al4cy9x34pmtp9g6d&dl=0). The polygons of the annotations are also available as shapefiles in [this repository](https://github.com/Orion-AI-Lab/FLOGA-annotations).
 
 In order to read the downloaded .hdf files, the `hdf5plugin`  python module is needed because data have been compressed using BZip2. These files include the raw Sentinel-2 and MODIS imagery aligned to a common grid, along with the labels and the various masks.
 
@@ -60,6 +60,7 @@ A new BAM-CD (version 2) model has been trained and achieves more robust results
 
  - **9/4/2024:** An issue with MODIS imagery on the 2019 data has been fixed.
  - **17/10/2024:** Added new model weights.
+ - **06/07/2026:** Added the polygons in a dedicated repository.
 
 ## TODOs
 
