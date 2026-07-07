@@ -4,6 +4,8 @@ This repository contains the dataset and code for the paper **"FLOGA: A machine 
 
 ## FLOGA Dataset
 
+### :arrow_forward: Version 1
+
 ![FLOGA sample](assets/dataset_sample.png)
 
 You can download the FLOGA dataset from [Dropbox](https://www.dropbox.com/scl/fo/3sqbs3tioox7s5vb4jmwl/h?rlkey=5p3e7wa5al4cy9x34pmtp9g6d&dl=0). The polygons of the annotations are also available as shapefiles in [this repository](https://github.com/Orion-AI-Lab/FLOGA-annotations).
@@ -21,7 +23,11 @@ python create_dataset.py --floga_path path/to/hdf/files --out_path data/ --out_s
 
 The above command will crop the images into 256x256 patches and export 3 pickle files with the train, validation and test splits respectively. The option `--sample` dictates that for each positive patch (i.e. patch that contains at least 1 burnt pixel) a negative one (i.e. a patch with no burnt pixels) will be included. Run `python create_dataset.py --help` for more information on the various options.
 
-#### Brief description
+### :arrow_forward: Version 2
+
+After the initial release of the FLOGA dataset, Sentinel-2 products were [reprocessed](https://sentinels.copernicus.eu/-/sentinel-2-old-baselines-products-deletion) by Copernicus and old products were deleted. Therefore, we decided to update FLOGA with the new imagery and this time publish the dataset as GeoTIFF files to preserve georeference information. The new version of FLOGA is available through [Hugging Face](https://huggingface.co/datasets/orion-ai-lab/FLOGA-GeoTIFFs) and the annotation files (along with the new Sentinel-2 image files used) can be found [here](https://github.com/Orion-AI-Lab/FLOGA-annotations).
+
+### Brief description
 
 FLOGA contains aligned Sentinel-2 and MODIS imagery for 326 wildfire events in Greece over the period 2017-2021, along with high-resolution burnt area mappings produced by the Hellenic Fire Service. For each event, the dataset offers:
  - Pre-fire Sentinel-2/MODIS imagery
@@ -56,7 +62,7 @@ You can find the weights of the pretrained BAM-CD (version 1) model [here](https
 
 A new BAM-CD (version 2) model has been trained and achieves more robust results. The new model adopts a pseudo-siamese scheme and extensive data augmentation is applied during training. The weights can be found [here](https://www.dropbox.com/scl/fo/8bhch7e0yhwgfqxsc6i69/ANcImDZyq7EYHVPt66aYuq8?rlkey=oiz26v6r09t4bpr5fize3a9a8&st=4qo50vqh&dl=0). To use this model, change the appropriate lines in the `configs/method/bam_cd.json` file as denoted in the comments.
 
-## UPDATES
+## UPDATES :loudspeaker:
 
  - **9/4/2024:** An issue with MODIS imagery on the 2019 data has been fixed.
  - **17/10/2024:** Added new model weights.
@@ -64,9 +70,8 @@ A new BAM-CD (version 2) model has been trained and achieves more robust results
 
 ## TODOs
 
- - Upload dataset to HuggingFace.
+ - Upload dataset v1 to HuggingFace.
  - Interpolate Sentinel-2 cloud masks for GSD 10m.
- - Provide better cloud masks.
 
 ## Citation
 If you would like to use our work, please cite our paper:
